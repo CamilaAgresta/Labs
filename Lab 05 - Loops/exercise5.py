@@ -30,6 +30,7 @@ After each operation, indicate on the screen the available balance in the accoun
 withdrawal operation exceeds the amount available in the bank account, the operation will be
 denied and the corresponding message will be displayed.
 """
+
 import random
 
 pin = ""
@@ -37,12 +38,42 @@ pin = ""
 for i in range(4):
     pin += str(random.randint(0,9))
 
-#print(pin)
+print(pin)
 
 balance = random.randint(50,5000)
 
-user_pin = input("Enter your PIN: ")
-
 #print(pin == user_pin)
 
-#while pin != user_pin:
+attempts = 0
+
+while attempts < 3:
+    user_pin = input("Enter your PIN: ")
+    if pin == user_pin:
+        print("Your account balance is:", balance)
+        attempts += 3
+        print("Welcome\n"
+              "---------------------\n"
+              "1 - Deposit \n"
+              "2 - Cash withdrawal \n"
+              "3 - Exit \n")
+
+        operation = 0
+        while operation != 3:
+            operation = int(input("Choose the operation: "))
+            print(operation)
+            if operation == 1:
+                deposit = int(input("How much money do you want to deposit? "))
+                balance += deposit
+                print("Your account balance is:", balance)
+            elif operation == 2:
+                withdrawal = int(input("How much money do you want to withdrawal? "))
+                if balance >= withdrawal:
+                    balance -= withdrawal
+                    print("Your account balance is:", balance)
+                else:
+                    print("You cannot withdraw more money than the account balance")
+
+    else:
+        attempts += 1
+        if attempts == 3:
+            print("You failed all the attempts")

@@ -16,6 +16,8 @@ such as they are even and odd in an alternative way. It does not matter if the v
 repeated; the aim is alternatively printing odd and even numbers.
 Example: for the interval [3,9] a valid sequence of numbers is: 6, 7, 6, 3, 4
 """
+# no se como hacerlo
+
 import random
 
 print("Enter two integer numbers A and B such as A + 5 < B")
